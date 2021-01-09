@@ -6,17 +6,18 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import "../src/styles/index.scss"
 library.add(fas)
 const wrapperStyle: React.CSSProperties = {
-  padding: '20px 40px'
+  padding: '20px 40px',
 }
 
 const storyWrapper = (stroyFn: any) => (
-  <div style={wrapperStyle}>
+  <div style={wrapperStyle} id="mogox-ui">
     <h3>组件演示</h3>
     {stroyFn()}
   </div>
 )
 addDecorator(storyWrapper)
 addDecorator(withInfo)
+console.log(typeof withInfo)
 addParameters({info: { inline: true, header: false}})
 const loaderFn = () => {
   const allExports = [require('../src/welcome.stories.tsx')];

@@ -10,7 +10,7 @@ MogoUI 是为交易所打造的一套组件库，使用 React Hooks 和 typescri
 ### 安装最后已经发布的组件库来试试
 
 ~~~javascript
-npm install mogoui --save
+npm install mogox-ui --save
 ~~~
 
 ### 使用
