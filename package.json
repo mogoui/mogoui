@@ -86,6 +86,7 @@
         "@types/react-transition-group": "^4.2.3",
         "@types/storybook__addon-info": "^5.2.1",
         "@types/lodash": "^4.14.165",
+        "@types/pako": "^1.0.1",
         "cross-env": "^7.0.0",
         "husky": "^4.2.1",
         "node-sass": "^4.13.0",
@@ -96,6 +97,8 @@
         "rimraf": "^3.0.1",
         "typescript": "3.7.2",
         "tradingview-api": "^1.0.0",
-        "lodash": "^4.17.20"
+        "lodash": "^4.17.20",
+        "pako": "^2.0.2",
+        "dayjs": "^1.9.8"
     }
 }
