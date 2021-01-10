@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { DataFeed, widget, GetBarsParams } from 'tradingview-api';
 import {
   IChartingLibraryWidget,
   Bar,
   LibrarySymbolInfo,
-  IBasicDataFeed,
-  IDatafeedChartApi,
-  IExternalDatafeed,
-  IDatafeedQuotesApi,
   ChartingLibraryWidgetOptions,
 } from 'tradingview-api/lib/library.min';
 import { WIDGET_OPTIONS } from './data';
 import _clone from 'lodash/clone';
 import { ws } from './utils/socket';
 import { apiGet } from './api';
+
+import './tradingView.scss';
 
 /**
  * @key Server 端定义字段
@@ -44,27 +42,22 @@ const supportedResolutions = [
   '1M',
 ];
 
-type TradingViewProps = {
+type TProps = {
   symbolInfo: IApiSymbols;
 };
 
 type IntervalT = keyof typeof intervalMap;
 
-const TradingView: React.FC<TradingViewProps> = (props) => {
+const TradingView: React.FC<TProps> = forwardRef((props) => {
   const { children } = props;
   const [symbol, setSymbol] = useState<string>('');
   const [_widget, setWidget] = useState<IChartingLibraryWidget>();
   const [interval, setInterval] = useState<IntervalT>('5min');
-  const [datafeed, setDatafeed] = useState<DataFeed>(
-    new DataFeed({
-      getBars: (params) => getBars(params),
-      fetchResolveSymbol: () => resolveSymbol(),
-    })
-  );
+  const [datafeed, setDatafeed] = useState<any>();
 
   const resolveSymbol = () => {
     return new Promise<LibrarySymbolInfo>((resolve) => {
-      console.log();
+      console.log(props.symbolInfo);
       const info = props.symbolInfo;
       resolve({
         name: symbol.toLocaleUpperCase(),
@@ -107,11 +100,11 @@ const TradingView: React.FC<TradingViewProps> = (props) => {
       res &&
       res.data.length
     ) {
-      subscribeKLine();
+    //   subscribeKLine();
     }
-    console.log(res);
+    console.log(res, symbol);
 
-    if (!res || !res.data || !res.data.length) {
+    if (!res || !res.data || !res.data.length || !params.firstDataRequest) {
       return {
         bars: [],
         meta: { noData: true },
@@ -147,7 +140,7 @@ const TradingView: React.FC<TradingViewProps> = (props) => {
       },
       (data) => {
         const tick = data.tick as IApiKLine;
-        datafeed.updateKLine({
+        datafeed?.updateKLine({
           time: tick.id * 1000,
           open: tick.open,
           high: tick.high,
@@ -183,7 +176,22 @@ const TradingView: React.FC<TradingViewProps> = (props) => {
   };
 
   useEffect(() => {
-    initTradingView();
+    datafeed && initTradingView();
+  }, [datafeed]);
+
+  useEffect(() => {
+    if (symbol) {
+      setDatafeed(
+        new DataFeed({
+          getBars: (params) => getBars(params),
+          fetchResolveSymbol: () => resolveSymbol(),
+        })
+      );
+    }
+  }, [symbol]);
+
+  useEffect(() => {
+    setSymbol(props.symbolInfo.symbol);
     return () => {
       _widget && _widget.remove();
     };
@@ -194,7 +202,6 @@ const TradingView: React.FC<TradingViewProps> = (props) => {
       <div id="tv_chart_container"></div>
     </div>
   );
-};
-TradingView.defaultProps = {};
-
+});
+TradingView.displayName = 'TradingView';
 export default TradingView;

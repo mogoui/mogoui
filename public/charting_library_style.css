@@ -1,0 +1,59 @@
+.chart-page :not(input):not(textarea):not(.selectable),
+.tv-profile .tags,
+.unselectable {
+  border: none;
+}
+
+html.theme-dark .chart-controls-bar,
+html.theme-dark .chart-page .chart-container,
+html.theme-dark .group-wWM3zP_M-,
+html.theme-dark .drawingToolbar-U3_QXRof- {
+  background: transparent;
+  color: #181828 !important;
+}
+
+html.theme-dark .loading-indicator,
+html.theme-dark body,
+html.theme-dark .chart-page,
+html.theme-dark .group-2JyOhh7Z-,
+html.theme-dark .title-bcHj6pEn,
+html.theme-dark .valuesAdditionalWrapper-3BfAIuML,
+html.theme-dark .layout__area--top>.container-2BvS3Fpg->.inner-3YzQuyJx-,
+html.theme-dark .layout__area--left>.container-2BvS3Fpg->.inner-3YzQuyJx-,
+html.theme-dark .layout__area--left .buttonIcon-2rBwJ1QM-,
+html.theme-dark .layout__area--top .value-DWZXOdoK-,
+html.theme-dark .layout__area--top .text-1sK7vbvh-,
+html.theme-dark .layout__area--left svg,
+html.theme-dark .layout__area--top svg,
+html.theme-dark .layout__area--center .button-13wlLwhJ-,
+html.theme-dark .layout__area--center .text-1sK7vbvh-,
+html.theme-dark .layout__area--center .icon-beK_KS0k-,
+
+/*html.theme-dark .noWrapWrapper-AC879h-w > div,*/
+
+html.theme-dark .fill-1djIbBXv- {
+  color: rgba(229, 223, 245, 0.6) !important;
+  background-color: #181828 !important;
+}
+
+html.theme-dark .item-2xPVYue0-.isActive-2j-GhQs_-,
+html.theme-dark .item-2xPVYue0-.isActive-2j-GhQs_-:active,
+html.theme-dark .item-2xPVYue0-.isActive-2j-GhQs_-:hover {
+  background-color: #fa8e31;
+}
+
+html.theme-dark .item-2xPVYue0-.isActive-2j-GhQs_-,
+html.theme-dark .item-2xPVYue0-.isActive-2j-GhQs_-:active,
+html.theme-dark .item-2xPVYue0-.isActive-2j-GhQs_-,
+html.theme-dark .item-2xPVYue0-.isActive-2j-GhQs_-:hover {
+  color: #ffffff;
+}
+
+.pane-legend-line__wrap-description {
+  display: none !important;
+}
+
+.theme-dark:root {
+  --tv-color-platform-background: #0c0c14;
+  --tv-color-pane-background: #0c0c14;
+}

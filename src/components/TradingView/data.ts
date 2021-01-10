@@ -4,8 +4,8 @@ import { ResolutionString } from './datafeed/library.min';
 export const WIDGET_OPTIONS: Partial<ChartingLibraryWidgetOptions> = {
   interval: '60' as ResolutionString,
   container_id: 'tv_chart_container',
-  library_path: './charting_library/',
-  custom_css_url: './charting_library_style.css',
+  library_path: '/charting_library/',
+  custom_css_url: '/charting_library_style.css',
   disabled_features: [
     'hide_last_na_study_output',
     'header_symbol_search',
